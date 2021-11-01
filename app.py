@@ -9,7 +9,7 @@ from io import BytesIO
 PR_TIME_ZONE = pytz.timezone("Etc/GMT+4")
 
 date_from_str = "2021-10-27"
-date_to_str = "2021-10-30"
+date_to_str = "2021-10-31"
 
 date_from = datetime.datetime.strptime(date_from_str,'%Y-%m-%d')
 date_to = datetime.datetime.strptime(date_to_str,'%Y-%m-%d')
@@ -107,6 +107,10 @@ if selection != "All":
 else:
     selectedPopulation = all_population
     selectedSampled = all_sampled
+    
+st.sidebar.title("Metrics:")
+st.sidebar.text("Total tweets: %s"%"{:,}".format(len(selectedPopulation)))
+st.sidebar.text("Sampled tweets: %s"%"{:,}".format(len(selectedSampled)))
 
 plotTimeSeries(selectedPopulation,selectedSampled)
 
